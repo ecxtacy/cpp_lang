@@ -1,0 +1,45 @@
+// This is some basic info on c plus plus language for my
+// future reference.
+
+--------------------------------------------------------------------------------
+
+				VECTOR
+
+vector<type> name;
+can by dynamically allocated, no need to put no_of_elem.
+
+vector<int> v(no_of_elements);
+vector<int> v = {1,2,3,4,.....};
+
+v.size(); // length of the vector
+
+
+--------------------------------------------------------------------------------
+
+			TOKEN
+
+A token is a sequence of characters that represents something we consider
+a unit such as a number or an operator. Thats the way a C++ compiler 
+deals with its source. Actually, "tokenizing" in some form or another 
+is the way most analysis of text starts. 
+
+class Token {
+	public:
+		char kind;
+		int value;
+		Token() {
+			// constructor
+		}
+}
+
+// or make a constructor externally
+Token::Token(/* arguments*/) {
+	// stuff
+}
+
+int main() {
+	Token t; // constructor called
+}
+
+
+
