@@ -193,6 +193,17 @@ ret_type fxn_name(arg_);
 ret_type fxn_name(arg_1, arg_2);
 ```
 
+```cpp
+    // you can do the following
+    loop {
+        break; // to exit
+    }
+
+    void function() {
+        return; // to return from void fxn
+    }
+```
+
 --------------------------------------------------------------------------------
 
                             RECURSION !!
@@ -318,9 +329,7 @@ void fun(const int& a);
 - object has the same relationship to a class that a variable has to
   a data type.
 - An object is said to be an instance of a class.
-  
-  
-  
+
   private, public - *feature* : data hiding.
  **private:** data within the class can be accessed by the functions of the class only.
 **public:** access to all outside.
@@ -329,37 +338,35 @@ void fun(const int& a);
 class Car
 {
 public:
-	// preferred initialization
-	Car() : number(0), no(1) // member given the value before {executes}
-	// to initialize the data with constructor
-	{}
-	// constructor overload
-	Car(int nu) : number(nu)
-	{}
-	// not recommended initialization
-	/*
-	Car()
-	{
-		number = 0;
-	}
-	*/
+    // preferred initialization
+    Car() : number(0), no(1) // member given the value before {executes}
+    // to initialize the data with constructor
+    {}
+    // constructor overload
+    Car(int nu) : number(nu)
+    {}
+    // not recommended initialization
+    /*
+    Car()
+    {
+        number = 0;
+    }
+    */
 
-	void set_number(int num) {
-		number = num;
-	}
-	~Car(); // destructor
-	void add_it(int, int); //declaration
+    void set_number(int num) {
+        number = num;
+    }
+    ~Car(); // destructor
+    void add_it(int, int); //declaration
 private:
-	int number;
-	int no;
+    int number;
+    int no;
 }; 
 
 void Car::add_it(int x, int y) {
 
-	// define outside class
+    // define outside class
 }
-
-
 ```
 
 - A constructor is a member function that is executed automatically whenever an object is created.
@@ -369,41 +376,365 @@ void Car::add_it(int x, int y) {
 ```cpp
 // already built, copies one object into the getting-initialized obj.
 
-	// in main
-	Foo foo2(foo1); //  foo1 is already present.
-	// copies all data members.
-
+    // in main
+    Foo foo2(foo1); //  foo1 is already present.
+    // copies all data members.
 ```
 
-On the other hand, contrary to what you may have been led to believe, all the objects in
-a given class use the same member functions. The member functions are created and placed in
+On the other hand, contrary to what you may have been led to believe, 
+
+###### *all the objects in a given class use the same member functions.*
+
+The member functions are created and placed in
 memory only once—when they are defined in the class definition. This makes sense; there’s
 really no point in duplicating all the member functions in a class every time you create another
 object of that class, since the functions for each object are identical.
 
+**If a data item in a class is declared as static, only one such item is created for the entire
+class, no matter how many objects there are. A static data item is useful when all objects of the
+same class must share a common item of information.** 
+A member variable defined as static
+has characteristics similar to a normal static variable: It is visible only within the class, but its
+lifetime is the entire program. It continues to exist even if there are no objects of the class
+
+```cpp
+class foo
+{
+public:
+    foo();
+    ~foo();
+private:
+    static int fax; // declare in the class    
+};
+
+// but define outside the class
+// acts more like a global variable
+int foo::fax = 69;
+```
+
+- A *<a id="const-member-function">const</a> member function guarantees that it will never modify any of its class’s member data.*
+  
+  ```cpp
+  // in a class
+    public:
+        void func() const
+        {}
+  ```
+
+- When an object is declared as const, you can’t modify it. It follows that you can
+  use only const member functions with it, because they’re the only ones that guarantee not to
+  modify it.
+
+--------------------------------------------------------------------------------
+
+                                            ARRAY
+
+- using array as argument is same as a reference arguement as array is a pointer to the starting memory address.
+
+`int fxn(array_name);`
+// passes original array
+
+- arrays can contain structures.
+  to access the member:-
+  
+                        `arr_name[index].member_name;`
+
+> Stacks are one of the cornerstones of the architecture of the microprocessors used in most modern
+> computers. As we mentioned earlier, functions pass their arguments and store their return address on
+> the stack. This kind of stack is implemented partly in hardware and is most conveniently accessed in
+> assembly language. However, stacks can also be created completely in software. Software stacks offer
+> a useful storage device in certain programming situations, such as in parsing (analyzing) algebraic
+> expressions.                
+
+> There is no bounds-checking in C++ arrays. If the program inserts something beyond the
+> end of the array, neither the compiler nor the runtime system will object. However, the renegade
+> data will probably be written on top of other data or the program code itself. This may cause
+> bizarre effects or crash the system completely.
+
+--------------------------------------------------------------------------------
+
+                                    STRING
+
+1. C-STRING
+2. String object wali c++ wali
+
+```cpp
+// ~~~~~~~~~~~~~~~~ c-string ~~~~~~~~~~~~~~~~~~~~
 
 
+#include <cstring>
+// c-string
+
+char str[max];
+cin >> str; // but then cin will not take whitespace
+// extraction operator >> space is terminating character
+
+// other init way
+char aster[30] = "the string stuff";
+
+// other way
+char str[80];
+cin.get(str, 80);
+/*
+    first arg get(address_where_input, max_size, termination_char);
+    terminates on that char given as 3rd arg, otherwise default '\n' is taken as 3rd arg
+*/
+cout << str << endl; // whitespace prob fixed
+
+strlen(str); // returns length of c-string
+strcpy(destination, source);
+strcat(str1, str2); // concatnates
+
+// string array
+char arry[max_element][max_length];
+cout << arry[element_index] << endl;
+// but some bytes are wasted for words less than max_length.
+// optimization can be done by pointers.
 
 
+// ~~~~~~~~~~~~~~~~~~~ Standard C++ string class ~~~~~~~~~~~~~~~~~~~~~~~
+
+#include <string>
+
+s1 = s2 + s3; // concatnate with +
+
+// to make string
+string a = "val";
+string b("val_b");
+string c;
+
+c = "this one " + "and this one";
+
+s1.swap(s2); // swaps s1 and s2
+
+/* -------- reading input -------- */
+
+string fullname, bio;
+getline(cin, fullname); // read blanks
+getline(cin, bio, '$'); // stop reading on $
 
 
+// string class functions
+// str_obj.function();
 
+find(string_to_find); // returns index of char from where it starts
+find_first_of(string_of_chars); // arg: any chars from which word starts first, finds them
+// return -1 if not found
 
+erase(start_indx, end_indx);
+replace(strt_ind, end_ind, string_to_replace_with);
+insert(start_index, string_obj);
+append(no_of_times, char_to_append);
 
+// ==, >, < operators can be used to compare strings.
+// >, < sorts alphabetically
 
+substr(start_index, end_index);
+length(); // length of string object
 
+at(index); // gives char at that index of string
+obj.copy(to_char_array, length, start_index);
+to_char_array[length] = 0; // put null character to convert to c-string
+```
 
+--------------------------------------------------------------------------------
 
+                                OPERATOR OVERLOADING
 
+```cpp
+class Counter
+{
+private:
+    unsigned int count;
+public:
+    Counter() : count(0)
+    {}
+    unsigned int get_count() {
+        return count;
+    }
 
+    // here goes the overloading
+    void operator ++ () { // prefix hai abhi bas
+        ++count;
+    }
 
+}; 
 
+Count c1;
+++c1;
+++c1;
+// c1 is 2;
+```
 
+#### Nameless temporary objects
 
+```cpp
+Counter operator ++ () {
+    ++count;
+    return Counter(count); // unnamed temporary object initialized to this count
+    // but then you require constructor arguement which initializes count
+}
 
+// to overload postfix
 
+Counter operator ++ (int) { // just a syntax to make it postfix
+    return Counter(count++);
+}
+```
 
+- Here’s the key: ***The argument on the left side of the operator (dist1 in this case) is the object
+  of which the operator is a member. The object on the right side of the operator (dist2) must
+  be furnished as an argument to the operator. The operator returns a value, which can be assigned
+  or used in other ways***
 
+```cpp
+Distance operator + (Distance) const { // you can put const or not
+    // code goes here
+}
+```
 
+[see this const here](#const-member-function)
 
+- ==
+- ++
+- +
+- > 
+- <
+- +=
+- []
+  can be overloaded easily    
 
+### Mutable member
+
+- when create a const obj, a mutable member can be changed
+  
+  ```cpp
+  class Moot
+  {
+  public:
+    Moot();
+    ~Moot();
+  private:
+    mutable int size;    
+    int sx;
+  };
+  ```
+
+const Moot moot;
+moot.change_size(); // valid
+moot.change_sx(); // invalid
+
+```
+--------------------------------------------------------------------------------
+
+                        INHERITANCE
+
+- Inheritance is the process of creating new classes, called derived classes, from
+existing or base classes.
+
+- The derived class inherits all the capabilities of the base class but
+can add embellishments and refinements of its own.
+
+- if you don’t specify a constructor, the derived class will use an appropriate constructor from the base class.
+
+- The answer is that member functions can
+access members of the base class if the members are public, or if they are protected. They
+can’t access private members. Any member data that the derived classes might
+need to access should be made protected rather than private. This ensures that the class is
+“inheritance ready.”
+
+```cpp
+// to inherit
+
+class Cunter
+{
+public:
+    Cunter();
+    ~Cunter();
+    void do() {}
+};
+
+class Cuntest : public Cunter // inherits all the features of the Cunter class
+{
+public:
+    Cuntest() : Cunter() // call the parent constructor
+    {}
+    // overrride
+    void do() {
+        // do more stuff
+        Cunter::do();
+    }
+
+};
+// good practice to write the constructor for child, because it uses only
+// default constructor of the parent, other it doesn't use
+```
+
+class A <-------- class B
+   ^        public
+   |
+   | private
+   |
+   |
+ class C 
+
+now, only objects of C can access any data of A.
+objects of B can access only public and protected data of A
+
+int a = objB.private // invalid
+int a = objB.protected // invalid
+int a = objB.public // valid
+
+// all invalid
+int a = objC.private
+int a = objC.protected
+int a = objC.public
+
+> class A <------- class B <-------- class C 
+
+multiple inheritance possible
+
+```cpp
+class A : public B, public C
+{
+public:
+    A();
+    ~A();
+
+};
+```
+
+---
+
+                                    POINTER
+
+#### ptr-void
+
+- `void *ptr;`
+
+- // can point to anything
+
+- array can be accessed using pointer notation
+
+```cpp
+int arr[5] = {1,2 ,3,4,5};
+
+int x = *(arr+1); // element 2 in the array
+```
+
+- c-string last character is '\0' which makes false if put in a condition check.
+
+```cpp
+char *stg = "this";
+// stg points to 't' in the string literal.
+// *(stg+4) is the null character.
+
+// read right to left
+const int* cptrInt; //cptrInt is a pointer to constant int
+int* const ptrcInt; //ptrcInt is a constant pointer to int
+
+char *ar[3] = {"apples", "oranges", "bananas"};
+```
+
+| a   | p   | p   | l   | e   | s   | \0  | o   | r   | a   | n   | g   | e   | s   | \0  | b   | a   | n   | a   | n   | a   | s   | \0  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
