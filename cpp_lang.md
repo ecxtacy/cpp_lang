@@ -3,22 +3,31 @@
 
 --------------------------------------------------------------------------------
 
-                VECTOR
+## Index
 
-` vector<type> name;`
+1. [token](#token)
+2. [type-conversion](#type-conversion)
+3. [do while loop](#do-while-loop)
 
-can by dynamically allocated, no need to put no_of_elem.
 
-```cpp
-vector<int> v(no_of_elements);
-vector<int> v = {1,2,3,4,.....};
 
-v.size(); // length of the vector
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --------------------------------------------------------------------------------
 
-            TOKEN ( our own implementation )
+ #### TOKEN ( our own implementation )
 
 A token is a sequence of characters that represents something we consider
 a unit such as a number or an operator. Thats the way a C++ compiler 
@@ -99,12 +108,14 @@ double - 15 digit precision
 The unsigned types are used when the quantities represented are always positive
 unsigned int x;
 
+##### type-conversion
+
 ```cpp
 aCharVar = static_cast<char>(anIntVar);
 char_var = (type)var; // c lang cast can also be used;
 ```
 
-do-while loop
+##### do-while-loop
 
 ```cpp
 do {
@@ -114,6 +125,8 @@ while(condn);
 ```
 
 `min = (alpha<beta) ? alpha : beta;`
+
+##### operator
 
 | Operator type | Operators               | Precedence |
 | ------------- | ----------------------- | ---------- |
@@ -125,6 +138,8 @@ while(condn);
 | Logical       | And && Or \|            |            |
 | Conditional   | ?:                      |            |
 | Assignment    | =, +=, –=, *=, /=, %=   | Lowest     |
+
+##### struct
 
 Nested struct can be created.
 
@@ -149,7 +164,7 @@ functions
 
 =======================================
 
-Enum:
+##### enum
 
 ```cpp
 enum days_of_week { Sun, Mon, Tue, Wed, Thu, Fri, Sat };
@@ -161,7 +176,7 @@ An enumeration is a list of all possible values.
 
 --------------------------------------------------------------------------------
 
-                    REFERENCE
+ ##### REFERENCE
 
 A reference provides an alias—a different name—for a variable. One of the most important
 uses for references is in passing arguments to functions.
@@ -180,7 +195,7 @@ thus less chances of error.
 
 --------------------------------------------------------------------------------
 
-Overloaded Function
+##### overloaded-function
 
 - performs one type of operation on one type of data
   and another type on other type of data.
@@ -206,7 +221,7 @@ ret_type fxn_name(arg_1, arg_2);
 
 --------------------------------------------------------------------------------
 
-                            RECURSION !!
+ ##### RECURSION
 
 - extremely powerful.
 - function calls itself.
@@ -240,7 +255,7 @@ func() {
 
 --------------------------------------------------------------------------------
 
-                            INLINE FUNCTION
+ ##### INLINE FUNCTION
 
 - generally for short coded functions.
 - compiles into inline code instead of a function.
@@ -257,7 +272,7 @@ inline ret_type fxn_name() {}
 
 --------------------------------------------------------------------------------                            
 
-                            DEFAULT ARGUEMENTS
+   ##### DEFAULT ARGUMENTS
 
 - work if the caller doesnt supply all necessary arguements.
 
@@ -272,7 +287,7 @@ void fx(int=8, char='a');
 
 --------------------------------------------------------------------------------                        
 
-                            SCOPE AND STORAGE
+##### SCOPE AND STORAGE
 
 scope
 : determines what part of the program can access it.
@@ -301,7 +316,7 @@ static storage - exist until the end of the program.
 
 --------------------------------------------------------------------------------
 
-                            RETURN REFERENCE
+  ##### RETURN REFERENCE
 
 ```cpp
 int& setx();
@@ -324,15 +339,16 @@ void fun(const int& a);
 
 --------------------------------------------------------------------------------
 
-                        CLASSES AND OBJECTS
+   ##### CLASSES AND OBJECTS
 
 - object has the same relationship to a class that a variable has to
   a data type.
-- An object is said to be an instance of a class.
 
+- An object is said to be an instance of a class.
+  
   private, public - *feature* : data hiding.
- **private:** data within the class can be accessed by the functions of the class only.
-**public:** access to all outside.
+  **private:** data within the class can be accessed by the functions of the class only.
+  **public:** access to all outside.
 
 ```cpp
 class Car
@@ -383,7 +399,7 @@ void Car::add_it(int x, int y) {
 
 On the other hand, contrary to what you may have been led to believe, 
 
-###### *all the objects in a given class use the same member functions.*
+***all the objects in a given class use the same member functions.***
 
 The member functions are created and placed in
 memory only once—when they are defined in the class definition. This makes sense; there’s
@@ -427,7 +443,7 @@ int foo::fax = 69;
 
 --------------------------------------------------------------------------------
 
-                                            ARRAY
+ ##### ARRAY
 
 - using array as argument is same as a reference arguement as array is a pointer to the starting memory address.
 
@@ -453,7 +469,7 @@ int foo::fax = 69;
 
 --------------------------------------------------------------------------------
 
-                                    STRING
+   ##### STRING
 
 1. C-STRING
 2. String object wali c++ wali
@@ -539,7 +555,7 @@ to_char_array[length] = 0; // put null character to convert to c-string
 
 --------------------------------------------------------------------------------
 
-                                OPERATOR OVERLOADING
+##### OPERATOR OVERLOADING
 
 ```cpp
 class Counter
@@ -618,16 +634,14 @@ Distance operator + (Distance) const { // you can put const or not
     mutable int size;    
     int sx;
   };
-  ```
+ 
 
 const Moot moot;
 moot.change_size(); // valid
 moot.change_sx(); // invalid
-
 ```
 --------------------------------------------------------------------------------
-
-                        INHERITANCE
+##### INHERITANCE
 
 - Inheritance is the process of creating new classes, called derived classes, from
 existing or base classes.
@@ -680,7 +694,7 @@ class A <-------- class B
 
 now, only objects of C can access any data of A.
 objects of B can access only public and protected data of A
-
+```cpp
 int a = objB.private // invalid
 int a = objB.protected // invalid
 int a = objB.public // valid
@@ -689,6 +703,7 @@ int a = objB.public // valid
 int a = objC.private
 int a = objC.protected
 int a = objC.public
+```
 
 > class A <------- class B <-------- class C 
 
@@ -706,7 +721,7 @@ public:
 
 ---
 
-                                    POINTER
+### POINTER
 
 #### ptr-void
 
@@ -738,3 +753,524 @@ char *ar[3] = {"apples", "oranges", "bananas"};
 
 | a   | p   | p   | l   | e   | s   | \0  | o   | r   | a   | n   | g   | e   | s   | \0  | b   | a   | n   | a   | n   | a   | s   | \0  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+###### memory-allocation
+
+- the new operator. This versatile operator obtains memory from the operating system and returns a pointer to its starting point.
+
+```cpp
+char *mm;
+mm = new char[length_of_memory]; // like malloc(in_c)
+delete[] mm; // like free(in c)
+// brackets indicated that we were deleting an array
+```
+
+- suppose you use new in a function. If the function uses a local variable as a pointer to this memory, the pointer will be destroyed when the function terminates, but the memory will be left as an orphan, taking up space that is inaccessible to the rest of the program. Thus it is always good practice, and often essential, to delete memory when you’re through with it.
+
+- We should note a potential glitch in using destructors as shown in NEWSTR. If you copy one
+  String object to another, say with a statement like s2 = s1, you’re really only copying the
+  pointer to the actual (char*) string. Both objects now point to the same string in memory. But
+  if you now delete one string, the destructor will delete the char* string, leaving the other
+  object with an invalid pointer. This can be subtle, because objects can be deleted in nonobvious ways, such as when a function in which a local object has been created returns. 
+
+```cpp
+// access pointer obj member
+Cry *cr;
+cr = new Cry;// points to new Cry object
+
+(*cr).member_1 = something; // inefficient and inelegant
+cr->member_1 = something; // better
+cr->a_function();
+
+
+// another way
+Distance& dist = *(new Distance); // new returns a pointer to memory block large enough for object
+// dist is a reference alias
+dist.get_dis();
+dis.show_dis();
+```
+
+....................................................................................................
+
+```cpp
+class sampleclass
+{
+sampleclass* ptr; // this is fine
+};
+```
+
+*However, while a class can contain a pointer to an object of its own type, it cannot contain an
+object of its own type:*
+
+```cpp
+class sampleclass
+{
+sampleclass obj; // can’t do this
+};
+```
+
+*This is true of structures as well as classes*
+
+--------------------------------------------------------------------------------
+
+ ##### POINTERS TO POINTERS
+
+```cpp
+int* arrptr[100]; // array of pointers
+// but array is itself a pointer
+
+// call
+exec(arrptr);
+
+
+void exec(int** the_arr) {
+    for (int i = 0; i < 100; ++i)
+    {
+        cout << **(the_arr+i) << endl;
+    }
+
+}
+```
+
+```cpp
+// quick and brief demonstration
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+void exec(int** the_arr);
+
+int main() {
+
+    int* arrptr[3];
+    int a=9,b=8,c=7;
+    (arrptr[0])=&a;
+    (arrptr[1])=&b;
+    (arrptr[2])=&c;
+
+    exec(arrptr);
+
+
+}
+void exec(int** the_arr) {
+    for (int i = 0; i < 3; ++i)
+    {
+        cout << **(the_arr+i) << endl;
+    }
+
+}
+```
+
+> *Actually, when we sort person objects, we don’t move the objects themselves; we move the
+> pointers to the objects. This eliminates the need to shuffle the objects around in memory,
+> which can be very time-consuming if the objects are large.*
+
+- Above nice trick
+
+--------------------------------------------------------------------------------
+
+##### POLYMORPHISM
+
+```cpp
+class Base
+{
+public:
+    Base();
+    ~Base();
+    void draw() {}
+
+};
+
+
+class B1 : public Base
+{
+public:
+    B1();
+    ~B1();
+    void draw(/*of_B1*/) {}
+
+};
+
+class B2 : public Base
+{
+public:
+    B1();
+    ~B1();
+    void draw(/*of_B2*/) {}
+
+};
+
+
+B1 b1;
+B2 b2;
+
+Base* baseptr;
+baseptr = &b1;
+baseptr->draw(); // calls Base only
+baseptr = &b2;
+baseptr->draw(); // calls Base only
+
+ // The rule is that pointers to objects of a derived class are typecompatible with pointers to objects of the base class.
+
+// but if we modify draw() in base class,
+virtual void Base::show() {
+    // base class ka
+}
+//  then the statements
+Base* baseptr;
+baseptr = &b1;
+baseptr->draw(); // calls b1 ka draw only
+baseptr = &b2;
+baseptr->draw(); // calls b2 ka draw only
+
+// abstract class : cant instatiate the base class
+// declare atleast one virtual function = 0 in the base class
+
+class Bs
+{
+public:
+    virtual void fxn() = 0; // now this becomes an abstract class
+    // pure virtual function
+};
+```
+
+- *Base class destructors should always be virtual. Suppose you use delete with a base class
+  pointer to a derived class object to destroy the derived-class object. If the base-class destructor
+  is not virtual then delete, like a normal member function, calls the destructor for the base
+  class, not the destructor for the derived class. This will cause only the base part of the object to
+  be destroyed.*
+- the base virtual destructor must be empty.
+
+```cpp
+class Parent
+{
+    protected:
+    int basedata;
+};
+    class Child1 : virtual public Parent // shares copy of Parent
+    { };
+    class Child2 : virtual public Parent // shares copy of Parent
+    { };
+    class Grandchild : public Child1, public Child2
+    {
+        public:
+        int getdata()
+        { return basedata; } // OK: only one copy of Parent
+        // if we dont use virtual then the above line gives error.
+        /*The use of the keyword virtual in these two classes causes them to share a single common
+        subobject of their base class Parent. Since there is only one copy of basedata, there is no
+        ambiguity when it is referred to in Grandchild.*/
+    };
+```
+
+- We want the function frifunc() to have access to both of these private data members, so we
+  make it a friend function. It’s declared with the friend keyword in both classes:
+
+`friend int frifunc(alpha, beta);` // alpha beta are classes
+
+This declaration can be placed anywhere in the class; it doesn’t matter whether it goes in the
+public or the private section.
+
+- In class alpha the entire class beta is proclaimed a friend. Now all the member functions of
+  beta can access the private data of alpha
+
+```cpp
+class alpha
+{
+public:
+    friend class beta;
+};
+```
+
+- To access showtotal() using only
+  the class name, we must declare it to be a static member function. This is what we do in
+  STATFUNC, in the declarator
+  static void showtotal()
+  Now the function can be accessed using only the class name.
+  `Class::showtotal();`
+
+- The member functions of every object have access to a sort of magic pointer named this,
+  which points to the object itself. Thus any member function can find out the address of the
+  object of which it is a member
+
+```cpp
+class where
+{
+    private:
+        char charray[10]; //occupies 10 bytes
+    public:
+        void reveal()
+        { cout << “\nMy object’s address is “ << this; }
+};
+////////////////////////////////////////////////////////////////
+int main()
+{
+    where w1, w2, w3; //make three objects
+    w1.reveal(); //see where they are
+    w2.reveal();
+    w3.reveal();
+    cout << endl;
+    return 0;
+}
+// in fxn, this->member_data accesses the data of this object itself.
+```
+
+--------------------------------------------------------------------------------
+
+##### TEMPLATES
+
+```cpp
+template <class T>
+T abs(T n) {
+    return (n<0) ? -n : n;
+}
+ // called a function template
+/*a template function is a specific instance of a function template.
+Notice that the amount of RAM used by the program is the same whether we use the template
+approach or actually write three separate functions.
+*/
+
+template <class A, class B>
+// now use both in the functions
+
+template <class Type>
+class Stack
+{
+public:
+    Stack();
+private:
+    Type number; // now it can be long int short any
+};
+
+// during instantiation
+Stack<float> s1;    
+
+// outside declaration new syntax
+template<class Type>
+Stack<Type>::Stack() //constructor
+{
+top = -1;
+}
+```
+
+### exceptions
+
+```cpp
+class A
+{
+public:
+    A();
+    class error {
+        // what it does if thrown
+    }
+    ~A();
+    void func() {
+        throw error();
+    }
+};
+
+// in main
+
+try {
+    // do the thing which you want
+    A a;
+    a.func();
+    // func() throws error
+}
+catch(A::error) {
+    // do this if error occured
+}
+```
+
+---
+### standard-template-library
+
+- The term data structures refers to the ways data is stored in memory, and algorithms refers to how it is manipulated.
+
+> STL Tutorial and Reference Guide, Second Edition by David R. Musser, Gillmer J. Derge, 
+> and Atul Saini
+
+
+---
+#### container
+
+- A container is a way that stored data is organized in memory
+- A container is a way to store data, whether the data consists of built-in types such as int and
+  float, or of class objects. The STL makes seven basic kinds of containers available, as well as
+  three more that are derived from the basic kinds.
+- Containers in the STL fall into two main categories: sequence and associative. The sequence
+  containers are vector, list, and deque. The associative containers are set, multiset, map, and
+  multimap. In addition, several specialized containers are derived from the sequence containers.
+  These are stack, queue, and priority queue.
+
+| Container          | Characteristic                                 | Advantages and Disadvantages                                                                                                                             |
+| ------------------ | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ordinary C++ array | Fixed size                                     | Quick random access (by index number),Slow to insert or erase in the middle, Size cannot be changed at runtime                                           |
+| vector             | Reloc ating,                                   | Quick random access (by  ,number) expandable array,Slow to insert or erase in the middle, Quick to insert or erase at end                                |
+| list               | Doubly linked list                             | Quick to insert or delete at any location, Quick access to both ends Slow random access                                                                  |
+| deque              | Like vector, but can be accessed at either end | Quick random access (using index number), Slow to insert or erase in the middle, Quick insert or erase (push and pop) at either the beginning or the end |
+
+```cpp
+vector<int> v;
+list<char> lschar;
+// memory allocation dynamic
+```
+
+| Container | Characteristics                                                             |
+| --------- | --------------------------------------------------------------------------- |
+| set       | Stores only the key objects, Only one key of each value allowed             |
+| multiset  | Stores only the key objects, Multiple key values allowed                    |
+| map       | Associates key object with value object, Only one key of each value allowed |
+| multimap  | Associates key object with value object, Multiple key values allowed        |
+
+---
+
+#### vector
+
+` vector<type> name;`
+
+can by dynamically allocated, no need to put no_of_elem.
+
+```cpp
+vector<int> v(no_of_elements);
+vector<int> v = {1,2,3,4,.....};
+
+v.size(); // length of the vector
+
+v.push_back(8); // puts element 8 back of the array
+
+v.max_size(); // returns max size the vector can hold in this system
+
+double arr[] = { 1.1, 2.2, 3.3, 4.4 };
+vector<double> v1(arr, arr+4); 	//initialize vector to array
+vector<double> v2(4); 			//empty vector of size 4 (garbage hai yaha)
+
+v1.swap(v2);
+// swaps contents of v1 and v2
+
+v2.back(); // returns last element
+v2.pop_back(); // removes last element
+
+v.insert(iter_location, element);
+v.erase(iter_location, element);
+
+// not so efficient with vector because you have to shift all the elements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+---
+
+##### data-structure-functions
+
+| Name       | Purpose                                                                                              |
+| ---------- | ---------------------------------------------------------------------------------------------------- |
+| size()     | Returns the number of items in the container                                                         |
+| empty()    | Returns true if container is empty                                                                   |
+| max_size() | Returns size of the largest possible container                                                       |
+| begin()    | Returns an iterator to the start of the container, for iterating forwards through the container      |
+| end()      | Returns an iterator to the past-the-end location in the container, used to end forward iteration     |
+| rbegin()   | Returns a reverse iterator to the end of the container, for iterating backward through the container |
+| rend()     | Returns a reverse iterator to the beginning of the container; used to end backward iteration         |
+
+| Container      | Implementation                                | Characteristics                                                                        |
+| -------------- | --------------------------------------------- | -------------------------------------------------------------------------------------- |
+| stack          | Can be implemented  as vector, list, or deque | Insert (push) and remove (pop) at one end only                                         |
+| queue          | Can be implemented as list or deque           | Insert (push) at one end,  remove (pop) at other                                       |
+| priority queue | Can be implemented as vector or deque         | Insert (push) in random order  at one end, remove (pop) in sorted order from other end |
+
+
+---
+#### algorithms
+
+- Algorithms in the STL are procedures that are applied to containers to process their data in various ways. For example, there are algorithms to sort, copy, search, and merge data. Algorithms
+  are represented by template functions. These functions are not member functions of the container classes. Rather, they are standalone functions. Indeed, one of the striking characteristics
+  of the STL is that its algorithms are so general. You can use them not only on STL containers,
+  but on ordinary C++ arrays and on containers you create yourself
+
+| algo       | purpose                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------ |
+| find       | Returns first element equivalent to a specified value                                                        |
+| count      | Counts the number of elements that have a specified value                                                    |
+| equal      | Compares the contents of two containers and returns true if all corresponding elements are equal             |
+| search     | Looks for a sequence of values in one container that corresponds with the same sequence in another container |
+| copy       | Copies a sequence of values from one container to another (or to a different location in the same container) |
+| swap       | Exchanges a value in one location with a value in another                                                    |
+| iter_swap  | Exchanges a sequence of values in one location with a sequence of values in another location                 |
+| fill       | Copies a value into a sequence of locations                                                                  |
+| sort       | Sorts the values in a container according to a specified ordering                                            |
+| merge      | Combines two sorted ranges of elements to make a larger sorted range                                         |
+| accumulate | Returns the sum of the elements in a given range                                                             |
+| for_each   | Executes a specified function for each element in the container                                              |
+
+
+---
+#### iterator
+
+- Iterators are a generalization of the concept of pointers: they point to elements in a container.
+  You can increment an iterator, as you can a pointer, so it points in turn to each element in a
+  container. Iterators are a key part of the STL because they connect algorithms with containers.
+
+- You can increment iterators with the
+  ++ operator so they point to the next element, and dereference them with the * operator to
+  obtain the value of the element they point to. In the STL an iterator is represented by an object
+  of an iterator class.
+
+| Iterator Type | Read/Write     | Be Saved | Direction        | Access |
+| ------------- | -------------- | -------- | ---------------- | ------ |
+| Random access | Read and write | Yes      | Forward and back | Random |
+| Bidirectional | Read and write | Yes      | Forward and back | Linear |
+| Forward       | Read and write | Yes      | Forward only     | Linear |
+| Output        | Write only     | No       | Forward only     | Linear |
+| Input         | Read only      | No       | Forward only     | Linear |
+
+---
+
+#### function-object
+
+- a function object can be taken as an argument, in some of the algorithms:-
+
+```cpp
+
+sort(data,  data+6, greater<double>()); // this greater function reverses the sorting order
+
+// another example
+
+bool isDon(string name); // checks if name == "don" then returns true
+
+find_if(name, name+6, isDon);
+// 3rd parameter is the address of the function object
+// find_if applies isDon to every element on the list
+
+// similarly 
+for_each(start_iter, end_iter, fxn_to_be_applied_on_each_element);
